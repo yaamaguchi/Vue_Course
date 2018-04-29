@@ -8,7 +8,7 @@
             <li class="lista-fotos-item" v-for="pic in fotosComFiltro">
                 <meu-painel :titulo="pic.titulo">
                     <imagem-responsiva :url="pic.url" :titulo="pic.titulo"/>
-                    <meu-botao tipo="button" rotulo="Remover" @click.native="remove(pic)"/>
+                    <meu-botao tipo="button" rotulo="Remover" estilo="perigo" :confirmacao="false" @botaoAtivado="remove($event, pic)"/>
                 </meu-painel>
             </li>
         </ul>
@@ -44,10 +44,9 @@
             }
         },
         methods:{
-            remove(foto){
-                if(confirm('Confirma operação?')){
-                    alert('Remover a foto:=> ' + foto.titulo);
-                }
+            remove($event, foto){
+                //alert($event);
+                alert('Remover a foto:=> ' + foto.titulo);
             }
         },
         data(){
